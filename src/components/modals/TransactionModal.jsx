@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Modal } from "./Modal.jsx"
-import { Button } from "../ui/button"
+import { Button } from "../common/button.jsx"
 
 export function TransactionModal({
                                      isOpen,

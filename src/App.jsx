@@ -6,26 +6,24 @@ import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { LoginPage } from "./pages/LoginPage";
 import { Home } from "./pages/HomePage";
 import {TransactionPage} from "@/pages/TransactionPage.jsx";
+import {MainLayout} from "@/components/layout/MainLayout.jsx";
 
 export default function App() {
     return (
         <AuthProvider>
-            <BrowserRouter>
                 <Routes>
-                    {/* Public Route */}
                     <Route path="/login" element={<LoginPage />} />
 
-                    {/* Protected Routes */}
                     <Route element={<ProtectedRoute />}>
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/transactions" element={<TransactionPage />} />
+                        <Route element={<MainLayout />}>
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/transactions" element={<TransactionPage />} />
+                        </Route>
                     </Route>
 
-                    {/* Redirection par défaut vers /home */}
                     <Route path="/" element={<Navigate to="/home" replace />} />
                     <Route path="*" element={<Navigate to="/home" replace />} />
                 </Routes>
-            </BrowserRouter>
         </AuthProvider>
     );
 }

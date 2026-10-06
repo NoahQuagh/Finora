@@ -1,7 +1,7 @@
 import React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./card"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./chart"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../common/card.jsx"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../common/chart.jsx"
 import { formatMonthLong, formatMonthShort } from "./../lib/Format"
 
 const config = { solde: { label: "Argent libre (€)", color: "var(--chart-1)" } }

@@ -1,8 +1,8 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { CheckCircle2, PiggyBank, TriangleAlert, Wallet } from "lucide-react"
-import { Badge } from "./badge"
-import { Card, CardContent, CardHeader, CardTitle } from "./card"
+import { Badge } from "../common/badge.jsx"
+import { Card, CardContent, CardHeader, CardTitle } from "../common/card.jsx"
 import { AnimatedMoney } from "../motion/Animatedmoney.jsx"
 import { formatEUR } from "../lib/Format"
 

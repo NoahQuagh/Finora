@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { Check, Clock } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "./card"
-import { Button } from "./button"
+import { Card, CardContent, CardHeader, CardTitle } from "../common/card.jsx"
+import { Button } from "../common/button.jsx"
 import { formatEUR } from "../lib/Format"
 
 function Row({ label, value, max, delay, color = "#4B6FD6" }) {

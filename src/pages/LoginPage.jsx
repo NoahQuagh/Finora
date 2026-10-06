@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from "framer-motion"
 import { Eye, EyeOff, Lock, Mail } from "lucide-react"
 
 // Utilisation d'imports relatifs propres vers ui/
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
-import { Input } from "../components/ui/input"
-import { Label } from "../components/ui/label"
-import { Button } from "../components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/common/card.jsx"
+import { Input } from "../components/common/input.jsx"
+import { Label } from "../components/common/label.jsx"
+import { Button } from "../components/common/button.jsx"
 
 export function LoginPage() {
     const [email, setEmail] = useState("")

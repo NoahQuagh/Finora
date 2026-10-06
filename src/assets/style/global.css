@@ -1,13 +1,9 @@
-/* =====================================================================
-   Finora : une seule palette noir / gris pour shadcn ET Arc.
-   À importer APRÈS index.css et foundation.css (voir main.jsx).
-   ===================================================================== */
 
 :root,
 :root.dark,
 :root[data-theme="dark"],
 :root[data-theme="dark"][data-accent] {
-    /* --- surfaces (partagées shadcn + Arc) --- */
+
     --background: #0b0b0d;
     --foreground: #f4f4f5;
     --card: #131315;
@@ -16,7 +12,7 @@
     --popover-foreground: #f4f4f5;
     --border: rgba(255, 255, 255, 0.08);
 
-    /* --- shadcn --- */
+
     --primary: #f4f4f5;
     --primary-foreground: #0b0b0d;
     --secondary: #1d1d21;
@@ -43,7 +39,7 @@
     --chart-4: #52525b;
     --chart-5: #3f3f46;
 
-    /* --- Arc --- */
+
     --surface: #131315;
     --surface-raised: #1a1a1d;
     --surface-muted: #18181b;
@@ -57,11 +53,29 @@
     --success: #4ade80;
     --warning: #fbbf24;
     --danger: #f87171;
+
+    --color-second-primary: #ffffff;
+    --color-second-secondary: #f2ede6;
+    --color-second-tertiary: #7a7168;
+    --color-second-five:rgb(163 163 163/0.7);
+    --color-second-six: #43403b;
+    --color-second-quaternary: #575350;
+    --paper: #dfded6;
+    --paper-hover: #cccbc4;
+    --paper-border: #bdbdb6;
+
+    --gray: #8b949e;
+
+    --color-main-primary: #0e0d0c;
+    --color-main-secondary: #131313;
+    --color-main-tertiary: #1a1917;
+    --color-main-quaternary: #252320;
+
+    --font-text: 'DM Sans', sans-serif;/*DM Sans*/
+    --box-icon-color-hover: #33312d;
 }
 
-/* shadcn et Arc utilisent tous les deux "--accent" avec un sens différent
-   (fond de survol chez shadcn, couleur de sélection chez Arc).
-   On détache les classes Tailwind de shadcn (bg-accent...) de cette variable : */
+
 @theme inline {
     --color-accent: #1d1d21;
     --color-accent-foreground: #f4f4f5;
@@ -70,4 +84,41 @@
 body {
     background: var(--background);
     color: var(--foreground);
+}
+
+:root{
+    /*taille de texte*/
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.375rem;
+    --text-2xl: 1.75rem;
+    --text-3xl: 2.5rem;
+    --text-4xl: 3.5rem;
+    --text-5xl: 5rem;
+
+    /*marge de texte*/
+    --space-3xs: 0.2rem;
+    --space-xxs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-sm: 0.875rem;
+    --space-base: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --space-3xl: 3rem;
+    --space-4xl: 3.5rem;
+    --space-5xl: 4rem;
+
+    --radiusBox-xs: 6px;
+    --radiusBox-sm: 7px;
+    --radiusBox-xxs: 4px;
+    --radiusBox-md: 14px;
+    --radiusBox-lg: 20px;
+    --radiusBox-circle: 25px;
+    --radiusBox-full: 100%;
+
+    --boxshadow-white-s:rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset,
+    rgba(0, 0, 0, 0.12) 0px 1px 3px 0px,rgb(28 26 26 / 0.08) 0px 4px 12px 0px;
 }

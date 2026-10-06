@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react"
 import { Search, Loader2 } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/common/card.jsx"
 import { RecentTransactions } from "../components/ui/Recenttransactions"
 
 export function TransactionPage() {
@@ -12,9 +12,10 @@ export function TransactionPage() {
         setLoading(true)
         fetch("/api/transactions/getTransactions.php", { credentials: "include" })
             .then((r) => r.json())
-            .then((data) => {
-                if (data.success && Array.isArray(data.transactions)) {
-                    setTransactions(data.transactions)
+            .then((res) => {
+                const list = res?.data?.transactions || res?.transactions || []
+                if (res.success && Array.isArray(list)) {
+                    setTransactions(list)
                 }
             })
             .catch((err) => console.error("Erreur chargement transactions :", err))
@@ -33,7 +34,7 @@ export function TransactionPage() {
 
     return (
         <div className="space-y-4">
-            <Card className="border-white/10">
+            <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
                     <CardTitle className="text-lg font-semibold text-white">Toutes les transactions</CardTitle>
                     <div className="relative w-full max-w-xs">

@@ -1,6 +1,6 @@
 import React from "react"
-import { Badge } from "./badge"
-import { Card, CardContent, CardHeader, CardTitle } from "./card"
+import { Badge } from "../common/badge.jsx"
+import { Card, CardContent, CardHeader, CardTitle } from "../common/card.jsx"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./table"
 import { formatDateShort, formatSigned } from "../lib/Format"
 
