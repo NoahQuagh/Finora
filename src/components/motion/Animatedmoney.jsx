@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from "motion/react"
-import { formatEUR } from "./../lib/Format"
+import { formatEUR } from "../lib/Format.js"
 
 /** Montant en euros qui "roule" jusqu'à sa valeur (même idée que l'Animated counter d'Arc). */
 export function AnimatedMoney({ value, className }) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 
 export function useDashboard() {
     const [state, setState] = useState({
@@ -7,33 +7,30 @@ export function useDashboard() {
         isDemo: false
     })
 
-    useEffect(() => {
-        let alive = true
-
+    const fetchDashboard = useCallback(() => {
         fetch("/api/dashboard/loadStatCard.php", { credentials: "include" })
             .then((r) => {
                 if (!r.ok) throw new Error("Erreur HTTP " + r.status)
                 return r.json()
             })
             .then((json) => {
-                if (alive && json?.success && json.data) {
+                if (json?.success && json.data) {
                     setState({ data: json.data, loading: false, isDemo: false })
                 } else {
-                    // Fallback sur le mock uniquement en cas d'erreur de réponse
-                    setState({ data: dashboardMock, loading: false, isDemo: true })
+                    setState({ data: null, loading: false, isDemo: true })
                 }
             })
             .catch(() => {
-                if (alive) {
-                    // Fallback sur le mock si le serveur backend est injoignable
-                    setState({ data: dashboardMock, loading: false, isDemo: true })
-                }
+                setState({ data: null, loading: false, isDemo: true })
             })
-
-        return () => {
-            alive = false
-        }
     }, [])
 
-    return state
+    useEffect(() => {
+        fetchDashboard()
+    }, [fetchDashboard])
+
+    return {
+        ...state,
+        refetch: fetchDashboard
+    }
 }

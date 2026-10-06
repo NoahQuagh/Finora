@@ -2,11 +2,11 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Credentials: true');
 
-require_once __DIR__ . '/../../utils/Session.php';//TODO A FAIRE
-require_once __DIR__ . '/../../db.php';
+require_once __DIR__ . '/../utils/Session.php';
+require_once __DIR__ . '/../db.php';
 
 session_start();
-$userId = class_exists('Session') ? Session::id() : ($_SESSION['user_id'] ?? null);
+$userId = \api\utils\Session::id();
 
 if (!$userId) {
     http_response_code(401);

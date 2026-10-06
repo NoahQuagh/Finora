@@ -5,6 +5,7 @@ import { ProtectedRoute } from "./routes/ProtectedRoute";
 
 import { LoginPage } from "./pages/LoginPage";
 import { Home } from "./pages/HomePage";
+import {TransactionPage} from "@/pages/TransactionPage.jsx";
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
                     {/* Protected Routes */}
                     <Route element={<ProtectedRoute />}>
                         <Route path="/home" element={<Home />} />
+                        <Route path="/transactions" element={<TransactionPage />} />
                     </Route>
 
                     {/* Redirection par défaut vers /home */}

@@ -95,7 +95,8 @@ try {
             t.TRA_LIBELLE as libelle,
             t.TRA_MONTANT as montant,
             b.BUD_NOM as budget,
-            c.CAT_NOM as categorie
+            c.CAT_NOM as categorie,
+            c.CAT_ICON as icon
         FROM FIN_TRANSACTION t
         LEFT JOIN FIN_BUDGET b ON t.TRA_BUD_ID = b.BUD_ID
         LEFT JOIN FIN_CATEGORIE c ON t.TRA_CAT_ID = c.CAT_ID
@@ -113,6 +114,7 @@ try {
         $t['montant'] = (float)$t['montant'];
         $t['budget'] = (string)$t['budget'];
         $t['categorie'] = (string)$t['categorie'];
+        $t['icon'] = (string)$t['icon'];
     }
 
     //prelevement en attente

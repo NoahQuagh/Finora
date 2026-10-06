@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { CheckCircle2, PiggyBank, TriangleAlert, Wallet } from "lucide-react"
 import { Badge } from "./badge"
 import { Card, CardContent, CardHeader, CardTitle } from "./card"
-import { AnimatedMoney } from "./Animatedmoney"
+import { AnimatedMoney } from "../motion/Animatedmoney.jsx"
 import { formatEUR } from "../lib/Format"
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } }

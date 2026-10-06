@@ -50,7 +50,7 @@ export function BreakdownCards({ comptes, budgets, epargnes = [], prelevements =
     const handleValidate = async (id) => {
         setLoadingId(id)
         try {
-            const res = await fetch("/api/transactions/validatePending.php", {
+            const res = await fetch("/api/transactions/validePending.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

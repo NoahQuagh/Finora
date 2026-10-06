@@ -14,11 +14,16 @@ import { StatCards } from "../components/ui/Statcards"
 import { BalanceChart } from "../components/ui/Balancechart"
 import { BreakdownCards } from "../components/ui/Breakdowncards"
 import { RecentTransactions } from "../components/ui/Recenttransactions"
+import { Modal } from "../components/modals/Modal.jsx";
+import {TransactionModal} from "@/components/modals/TransactionModal.jsx";
+import {TransactionsView} from "@/components/views/TransactionsView.jsx";
 
 export function Home() {
     const { user, logout } = useAuth()
-    const { data, loading, isDemo } = useDashboard()
+    const { data, loading, isDemo, refetch } = useDashboard()
     const [view, setView] = useState("accueil")
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [step, setStep] = useState(1);
 
     if (loading || !data) {
         return (
@@ -27,6 +32,14 @@ export function Home() {
             </div>
         )
     }
+
+    const handleOpenModal = (initialStep = 1) => {
+        setStep(initialStep)
+        setIsModalOpen(true);
+    };
+
+
+    const handleCloseModal = () => setIsModalOpen(false);
 
     return (
         <SidebarProvider>
@@ -40,7 +53,7 @@ export function Home() {
 
                     <div className="ml-auto flex items-center gap-3">
                         {isDemo && <Badge variant="outline" className="text-muted-foreground">Données d'exemple</Badge>}
-                        <Button variant="default" size="sm" onClick={() => setView("transactions")}>
+                        <Button variant="default" size="sm" onClick={() => setIsModalOpen(true)}>
                             <Plus className="size-4 mr-1" /> Nouvelle transaction
                         </Button>
                     </div>
@@ -60,11 +73,14 @@ export function Home() {
                                         budgets={data.budgets}
                                         epargnes={data.epargne}
                                         prelevements={data.prelevement}
+                                        onRefresh={refetch}
                                     />
                                 </div>
                             </div>
-                            <RecentTransactions transactions={data.transactions} />
+                            <RecentTransactions transactions={data.transactions} title={"Dernières transactions"}/>
                         </>
+                    ) : view === "transactions" ? (
+                       navigate()
                     ) : (
                         <Card className="border-white/10">
                             <CardContent className="py-16 text-center text-muted-foreground">
@@ -74,6 +90,13 @@ export function Home() {
                     )}
                 </main>
             </SidebarInset>
+            <TransactionModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                comptes={data?.comptes || []}
+                budgets={data?.budgets || []}
+                onRefresh={refetch}
+            />
         </SidebarProvider>
     )
 }
